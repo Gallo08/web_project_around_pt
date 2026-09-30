@@ -71,12 +71,24 @@ const cardTemplate = document
   .querySelector("#card-template")
   .content.querySelector(".card");
 
+function handleEscape(evt) {
+  if (evt.key === "Escape") {
+    const openedModal = document.querySelector(".popup_is-opened");
+
+    if (openedModal) {
+      closeModal(openedModal);
+    }
+  }
+}
+
 function openModal(modal) {
   modal.classList.add("popup_is-opened");
+  document.addEventListener("keydown", handleEscape);
 }
 
 function closeModal(modal) {
   modal.classList.remove("popup_is-opened");
+  document.removeEventListener("keydown", handleEscape);
 }
 
 function fillProfileForm() {
@@ -86,6 +98,7 @@ function fillProfileForm() {
 
 function handleOpenEditModal() {
   fillProfileForm();
+  resetValidation(profileForm, validationConfig);
   openModal(editPopup);
 }
 
@@ -98,10 +111,7 @@ function handleProfileFormSubmit(evt) {
   closeModal(editPopup);
 }
 
-function getCardElement(
-  name = "Lugar sem nome",
-  link = "./images/placeholder.jpg",
-) {
+function getCardElement(name, link) {
   const cardElement = cardTemplate.cloneNode(true);
 
   const cardTitle = cardElement.querySelector(".card__title");
@@ -153,6 +163,8 @@ function handleCardFormSubmit(evt) {
 profileEditButton.addEventListener("click", handleOpenEditModal);
 
 profileAddButton.addEventListener("click", function () {
+  newCardForm.reset();
+  resetValidation(newCardForm, validationConfig);
   openModal(newCardPopup);
 });
 
@@ -171,7 +183,15 @@ imagePopupCloseButton.addEventListener("click", function () {
 profileForm.addEventListener("submit", handleProfileFormSubmit);
 
 newCardForm.addEventListener("submit", handleCardFormSubmit);
+const popups = document.querySelectorAll(".popup");
 
+popups.forEach(function (popup) {
+  popup.addEventListener("click", function (evt) {
+    if (evt.target === popup) {
+      closeModal(popup);
+    }
+  });
+});
 initialCards.forEach(function (card) {
   renderCard(card.name, card.link, cardsList);
 });
