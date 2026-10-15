@@ -33,6 +33,15 @@ Foram utilizados:
 - Botões desabilitados enquanto o formulário estiver inválido
 - Funções reutilizáveis para validar diferentes formulários
 
+## Organização do JavaScript
+
+O código utiliza classes e módulos JavaScript para separar as responsabilidades:
+
+- `Card.js`: cria os cartões e controla as ações de curtir, excluir e abrir a imagem.
+- `FormValidator.js`: valida os campos dos formulários e controla os botões de envio.
+- `utils.js`: reúne as funções de abertura e fechamento dos pop-ups.
+- `index.js`: conecta os módulos, cria as instâncias das classes e configura as interações da página.
+
 ## Tecnologias utilizadas
 
 - HTML5
@@ -57,8 +66,10 @@ web_project_around_pt/
 ├── pages/
 │   └── index.css
 ├── scripts/
+│   ├── Card.js
+│   ├── FormValidator.js
 │   ├── index.js
-│   └── validate.js
+│   └── utils.js
 ├── vendor/
 ├── index.html
 ├── README.md
