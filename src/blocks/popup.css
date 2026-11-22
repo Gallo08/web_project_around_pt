@@ -184,3 +184,15 @@
   background-color: #ffffff;
   cursor: default;
 }
+
+.popup__content_type_confirmation {
+  min-height: 0;
+}
+
+.popup__content_type_confirmation .popup__form {
+  margin-top: 38px;
+}
+
+.popup__content_type_confirmation .popup__button {
+  margin-top: 0;
+}

@@ -67,6 +67,10 @@ class FormValidator {
     });
   }
 
+  enableValidation() {
+    this.setEventListeners();
+  }
+
   resetValidation() {
     this._inputList.forEach((inputElement) => {
       this._hideInputError(inputElement);
