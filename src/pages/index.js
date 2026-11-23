@@ -80,6 +80,7 @@ const profilePopup = new PopupWithForm("#edit-popup", (formValues) => {
     })
     .finally(() => {
       profilePopup.renderLoading(false);
+      profileFormValidator.resetValidation();
     });
 });
 
@@ -102,6 +103,7 @@ const cardPopup = new PopupWithForm("#new-card-popup", (formValues) => {
     })
     .finally(() => {
       cardPopup.renderLoading(false);
+      newCardFormValidator.resetValidation();
     });
 });
 
@@ -128,6 +130,7 @@ const avatarPopup = new PopupWithForm("#avatar-popup", (formValues) => {
     })
     .finally(() => {
       avatarPopup.renderLoading(false);
+      avatarFormValidator.resetValidation();
     });
 });
 

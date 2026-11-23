@@ -6,6 +6,7 @@ export default class PopupWithConfirmation extends Popup {
 
     this._form = this._popup.querySelector(".popup__form");
     this._submitButton = this._form.querySelector(".popup__button");
+    this._submitButtonText = this._submitButton.textContent;
   }
 
   setSubmitAction(handleSubmit) {
@@ -13,7 +14,10 @@ export default class PopupWithConfirmation extends Popup {
   }
 
   renderLoading(isLoading) {
-    this._submitButton.textContent = isLoading ? "Excluindo..." : "Sim";
+    this._submitButton.textContent = isLoading
+      ? "Excluindo..."
+      : this._submitButtonText;
+
     this._submitButton.disabled = isLoading;
   }
 
